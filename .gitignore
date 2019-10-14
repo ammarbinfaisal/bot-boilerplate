@@ -1,0 +1,5 @@
+node_modules
+.adminid
+.token
+start-msg
+db/db.sqlite
