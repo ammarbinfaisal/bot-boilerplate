@@ -3,5 +3,12 @@
         "knex": "^0.19.5",
         "node-telegram-bot-api": "^0.30.0",
         "sqlite3": "^4.1.0"
+    },
+    "devDependencies": {
+        "xo": "^0.25.3"
+    },
+    "scripts": {
+        "fix": "xo --fix",
+        "start": "node bot.js"
     }
 }
