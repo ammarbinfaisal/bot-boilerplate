@@ -1,5 +1,3 @@
 node_modules
-.adminid
-.token
-start-msg
+config.js
 db/db.sqlite
