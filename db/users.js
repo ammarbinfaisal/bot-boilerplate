@@ -1,26 +1,29 @@
-const knex = require('./knex');
+const { Sequelize, Model, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite:.db/db.sqlite', {dialect: "sqlite"});
 
-(async () => {
-	const hasUsersTable = await knex.schema.hasTable('users');
-	if (hasUsersTable) {
-		return;
-	}
 
-	await knex.schema.createTable('users', table => {
-		table.integer('user_id').notNullable().unique();
-		table.string('username').unique();
-		table.string('first_name').notNullable();
-	});
-})();
+const users = sequelize.define("users", {
+	user_id: {
+		type: DataTypes.INTEGER,
+		allowNull: false
+	},
+	username: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	first_name: DataTypes.STRING
+})
+
+users.sync();
 
 module.exports.getUsers = async () => {
-	const users = await knex('users');
+	const users = await users.findAll();
 	return [...users];
 };
 
-module.exports.addUser = async ({user_id, username, first_name}) => {
-	const user = await knex('users').where({user_id}).first();
-	if (!user) {
-		await knex('users').insert({user_id, username, first_name});
+module.exports.addUser = async ({ user_id, username, first_name }) => {
+	const user = await users.findAll({where: { user_id }});
+	if (user.length == 0) {
+		await users.create({ user_id, username, first_name });
 	}
 };
