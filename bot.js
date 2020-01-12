@@ -24,25 +24,4 @@ bot.onText(/^\/start$/, async msg => {
 	await db.addUser({user_id, username, first_name});
 });
 
-// FOR ANNOUNCEMENTs
-
-let gonnaAnnounce = false;
-
-bot.onText(/\/?announce$/i, ({chat: {id}}) => {
-	if (isAdmin(id)) {
-		gonnaAnnounce = true;
-	}
-});
-
-bot.on('message', async msg => {
-	const {chat: {id}, text} = msg;
-	if (isAdmin(id) && gonnaAnnounce) {
-		const users = await db.getUsers();
-		await Promise.all(
-			users.map(user => bot.sendMessage(user.user_id, text))
-		);
-		gonnaAnnounce = false;
-	}
-});
-
 bot.startPolling();
