@@ -2,17 +2,15 @@ const fs = require('fs');
 const TelegramBot = require('node-telegram-bot-api');
 const db = require('./db');
 
-const TOKEN = fs.readFileSync('./.token', {encoding: 'utf-8'});
-const ADMIN_ID = fs.readFileSync('./.adminid', {encoding: 'utf-8'});
-const START_MSG = fs.readFileSync('./start-msg', {encoding: 'utf-8'});
+const {TOKEN, START_MSG, ADMIN_ID} = require("./config.js")
 
 if (!TOKEN) {
-	throw new Error('.token is empty');
+	throw new Error('TOKEN NOT PROVIDED');
 }
 
-if (!ADMIN_ID) {
-	throw new Error('.adminid is empty');
-}
+// if (!ADMIN_ID) {
+// 	throw new Error('.adminid is empty');
+// }
 
 const bot = new TelegramBot(TOKEN);
 
