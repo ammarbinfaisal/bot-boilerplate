@@ -1,0 +1,12 @@
+{
+  "author": "Ammar",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^2.13.1",
+    "fastify-log": "^1.2.1",
+    "faunadb": "^2.13.1",
+    "node-telegram-bot-api": "^0.40.0",
+    "pino": "^6.2.0",
+    "pino-pretty": "^4.0.0"
+  }
+}

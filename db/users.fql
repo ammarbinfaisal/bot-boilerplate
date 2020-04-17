@@ -1,0 +1,11 @@
+CreateIndex({
+    name: "users_by_id",
+    source: Collection("users"),
+    terms: [{ field: ["data", "id"] }],
+    unique: true
+});
+
+CreateIndex({
+    name: "all_users",
+    source: Collection("users")
+});
