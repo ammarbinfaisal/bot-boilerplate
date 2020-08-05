@@ -2,7 +2,7 @@
   "author": "Ammar",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^2.13.1",
+    "fastify": "^2.15.1",
     "fastify-log": "^1.2.1",
     "faunadb": "^2.13.1",
     "node-telegram-bot-api": "^0.40.0",
